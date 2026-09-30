@@ -1,0 +1,44 @@
+@use './variables.scss' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@mixin custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-thumb transparent;        
+
+  &::-webkit-scrollbar {
+    width: $scrollbar-size;
+    height: $scrollbar-size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $scrollbar-thumb;
+    border-radius: $radius-pill;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $scrollbar-thumb-hover;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-inter;
+  font-size: $font-size-md;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $color-bg-body;
+}
+
+body,
+html {
+  font-family: $font-family-primary;
+}
+
+code {
+  font-family: $font-family-code;
+}
+
+* {
+  @include custom-scrollbar;
+}

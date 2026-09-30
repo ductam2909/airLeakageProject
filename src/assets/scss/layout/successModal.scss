@@ -1,0 +1,259 @@
+.measurement-success-modal .ant-modal-content {
+  padding: 28px 30px 26px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+}
+
+.measurement-success-modal .ant-modal-body {
+  padding: 0;
+}
+
+/* HEADER */
+
+.success-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.success-icon {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+  border: 1px solid #a7f3d0;
+  background: #ecfdf5;
+
+  color: #3eaa76;
+  font-size: 25px;
+}
+
+.success-title {
+  color: #182033;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.success-subtitle {
+  margin-top: 5px;
+
+  color: #8793a8;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.success-divider {
+  height: 1px;
+  margin: 14px 0 18px;
+
+  background: #edf0f4;
+}
+
+/* PROGRESS */
+
+.progress-card {
+  padding: 16px 16px 12px;
+
+  border: 1px solid #e1e6ee;
+  border-radius: 14px;
+  background: #fafbfc;
+}
+
+.progress-title {
+  margin-bottom: 8px;
+
+  color: #536078;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.progress-card .ant-progress {
+  margin: 0;
+  line-height: 1;
+}
+
+.progress-card .ant-progress-inner {
+  border-radius: 999px;
+}
+
+.progress-card .ant-progress-bg {
+  border-radius: 999px !important;
+}
+
+/* GRID */
+
+.measurement-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+
+  margin-top: 18px;
+}
+
+.measurement-card {
+  min-height: 100px;
+  padding: 14px 14px;
+
+  border: 1px solid #dde3ec;
+  border-radius: 13px;
+  background: #fff;
+
+  box-sizing: border-box;
+}
+
+.measurement-label {
+  margin-bottom: 7px;
+
+  color: #9aa6ba;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* MÃ MÂM XE */
+
+.tray-code-input {
+  height: 32px;
+
+  border-color: #d8dee8;
+  border-radius: 8px;
+
+  color: #172033;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.tray-code-input:hover,
+.tray-code-input:focus {
+  border-color: #d8dee8;
+  box-shadow: none;
+}
+
+/* STATUS */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 28px;
+  padding: 2px 10px;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status-pass {
+  color: #268b5a;
+  border: 1px solid #9ee7bf;
+  background: #eafbf2;
+}
+
+.status-fail {
+  color: #d92d20;
+  border: 1px solid #fda29b;
+  background: #fef3f2;
+}
+
+/* VALUES */
+
+.measurement-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+
+  margin-top: 3px;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.measurement-value span {
+  color: #69758b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pressure-value {
+  color: #5548e7;
+}
+
+.leak-value {
+  color: #d17800;
+}
+
+/* DESCRIPTION */
+
+.measurement-description {
+  margin-top: 6px;
+
+  color: #8c98ac;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.success-text {
+  color: #3ca875;
+}
+
+.fail-text {
+  color: #d92d20;
+}
+
+/* FOOTER */
+
+.bottom-divider {
+  margin-top: 18px;
+  margin-bottom: 14px;
+}
+
+.success-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-success-button {
+  min-width: 86px;
+  height: 44px;
+  padding: 0 20px;
+
+  border: 1px solid #dbe2ec;
+  border-radius: 12px;
+
+  color: #536078;
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow: none;
+}
+
+.close-success-button:hover {
+  color: #344054 !important;
+  border-color: #bfc8d5 !important;
+  background: #f8fafc !important;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .measurement-success-modal {
+    max-width: calc(100vw - 24px);
+  }
+
+  .measurement-success-modal .ant-modal-content {
+    padding: 24px;
+  }
+
+  .measurement-grid {
+    grid-template-columns: 1fr;
+  }
+}
