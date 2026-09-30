@@ -64,7 +64,7 @@ export default function LoginPage() {
 
         <h1 className="login-title">Đăng nhập</h1>
         <p className="login-subtitle">
-          Nhập thông tin xác thực để vào hệ thống vận hành
+          Nhập thông tin xác thực để vào hệ thống vận hành2
         </p>
 
         {errorMessage && (
