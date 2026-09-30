@@ -59,7 +59,7 @@
           ]
         }
       ],
-      "artifactName": "${productName} Setup ${version}.${ext}"
+      "artifactName": "Air-Leakage-Project-Setup-${version}.${ext}"
     },
     "nsis": {
       "oneClick": false,
