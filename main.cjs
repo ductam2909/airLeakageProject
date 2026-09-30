@@ -188,40 +188,49 @@ function createWindow() {
 }
 
 function setupAutoUpdater() {
-  if (!app.isPackaged) return;
-
-  if (process.env.ELECTRON_GITHUB_OWNER && process.env.ELECTRON_GITHUB_REPO) {
-    autoUpdater.setFeedURL({
-      provider: "github",
-      owner: process.env.ELECTRON_GITHUB_OWNER,
-      repo: process.env.ELECTRON_GITHUB_REPO,
-      releaseType: "release",
-    });
-  }
-
-  if (process.env.ELECTRON_UPDATE_URL) {
-    autoUpdater.setFeedURL({
-      provider: "generic",
-      url: process.env.ELECTRON_UPDATE_URL,
-    });
+  // Chỉ kiểm tra update khi app đã được build/cài đặt
+  if (!app.isPackaged) {
+    console.log("Auto update skipped in development mode.");
+    return;
   }
 
   autoUpdater.autoDownload = true;
+  autoUpdater.autoInstallOnAppQuit = true;
 
-  autoUpdater.on("error", (error) => {
-    console.error("Auto update error:", error);
+  autoUpdater.on("checking-for-update", () => {
+    console.log("Checking for update...");
   });
 
-  autoUpdater.on("update-downloaded", () => {
-    const focusedWindow = BrowserWindow.getFocusedWindow() || mainWindow;
+  autoUpdater.on("update-available", (info) => {
+    console.log(`Update available: ${info.version}`);
+  });
+
+  autoUpdater.on("update-not-available", (info) => {
+    console.log(`App is up to date: ${info.version}`);
+  });
+
+  autoUpdater.on("download-progress", (progress) => {
+    console.log(
+      `Downloading update: ${progress.percent.toFixed(1)}%`,
+    );
+  });
+
+  autoUpdater.on("update-downloaded", (info) => {
+    console.log(`Update downloaded: ${info.version}`);
+
+    const focusedWindow =
+      BrowserWindow.getFocusedWindow() || mainWindow;
+
     dialog
       .showMessageBox(focusedWindow, {
         type: "info",
         title: "Có bản cập nhật mới",
-        message: "Bản cập nhật đã tải xong. Khởi động lại để cài đặt ngay?",
+        message: `Phiên bản ${info.version} đã tải xong.`,
+        detail: "Bạn có muốn khởi động lại để cập nhật ngay không?",
         buttons: ["Khởi động lại", "Để sau"],
         defaultId: 0,
         cancelId: 1,
+        noLink: true,
       })
       .then(({ response }) => {
         if (response === 0) {
@@ -230,7 +239,11 @@ function setupAutoUpdater() {
       });
   });
 
-  autoUpdater.checkForUpdatesAndNotify().catch((error) => {
+  autoUpdater.on("error", (error) => {
+    console.error("Auto update error:", error);
+  });
+
+  autoUpdater.checkForUpdates().catch((error) => {
     console.error("Could not check for updates:", error);
   });
 }
